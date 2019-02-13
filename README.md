@@ -1,0 +1,2 @@
+# Magento-Banner-Product-Slider
+Explore all opportunity to sell!! The banner product slider is an attractive image slider that showcases your new products at the top of your web page. The slider showcases the products with its attractive images and even advertises on the running sale of the products, if any. The banner product slider is one form of banner advertisement, accomplishing the need of website promotion which will ultimately generate revenue.
