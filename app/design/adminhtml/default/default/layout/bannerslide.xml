@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+<default>
+        <reference name="head">
+            <action method="addJs"><script>textjs/jscolor.js</script></action>
+        </reference>
+    </default>
+    <bannerslide_adminhtml_bannerslide_index>
+        <reference name="content">
+            <block type="bannerslide/adminhtml_bannerslide" name="bannerslide" />
+        </reference>
+    </bannerslide_adminhtml_bannerslide_index>
+</layout>

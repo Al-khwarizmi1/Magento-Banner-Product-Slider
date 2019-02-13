@@ -1,0 +1,61 @@
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     default_default
+ * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+/* product slider ================================================================================ */
+@import url(http://fonts.googleapis.com/css?family=Oswald);
+.slideshow{ width: 940px ; height: 380px; padding: 10px 0px 0px 10px; margin: 0 auto; clear: both; background: url(../images/footer_bkg.jpg) repeat; margin: 5px auto;}
+.featured_banner_lable{ width: 105px; height: 105px; position: relative; float: right; background: url(../images/featured_product.png) no-repeat; margin-right: 10px; margin-bottom: -105px; z-index: 5000;}
+.new_banner_lable{ width: 105px; height: 105px; position: relative; float: right; background: url(../images/new_product.png) no-repeat; margin-right: 10px; margin-bottom: -105px; z-index: 5000;}
+.popular_banner_lable{ width: 105px; height: 105px; position: relative; float: right; background: url(../images/popular_product.png) no-repeat; margin-right: 10px; margin-bottom: -105px; z-index: 5000;}
+.module_slider {  width:100%; min-height:496px; margin:0; padding:0px 0 30px 0; position:relative; overflow:hidden;}
+.sale { background:url(../images/sale.png) left top no-repeat; width:134px; height:134px; position:absolute; right:0; top:0; z-index:999;}
+
+/* ============================= slider ===================== */
+.banner{width:600px;position:absolute;top:0px;right:0;left:0;z-index:15;padding: 22px 0px 0px 22px;}
+.banner .p_name { width: 100%; font: normal 36px 'Oswald', sans-serif; color: #000; text-align: left;}
+.banner .p_des { width: 360px; float: left; height: 75px; color: #666666; text-align: left; line-height: 20px; }
+.banner .p_orprice {clear:both; font: normal 16px 'Impact', Charcoal, sans-serif; color: #333; text-align: left;  text-decoration:  line-through; float:left; padding-top: 13px;}
+.banner .p_spprice {font: normal 35px 'Impact', Charcoal, sans-serif; color: #333; text-align: left; float:left; padding-left: 20px;width:360px;}
+.banner .shopnow {display: block; clear: both; float: left; width: 163px; height: 40px; background: url(../images/shopnow.png) no-repeat; margin-top: 15px; }
+.discount_banner{ width: 134px; height: 82px; background: url(../images/discount_bkg.png) no-repeat; position:absolute; margin-left: 363px; font: normal 45px 'Impact', Charcoal, sans-serif; color: #fff; text-align: center; padding-top: 55px;}
+#slide { height:370px; width:930px; position:relative; overflow:hidden;}
+.slider {height:290px; width:930px; position:relative; overflow:hidden; background: url(../images/slider_bg.jpg) no-repeat;}
+.slider .pic {height:290px!important; width:930px!important; position:relative; overflow:hidden!important; border:none!important;}
+ .items {display:none;} 
+#slide ul.pagination {position: relative;z-index:99;padding:0px;margin:11px 0px 0px;list-style-type:none;background:none;width:930px;height:78px;}
+#slide ul.pagination li {width:153px;height:78px;float:left;margin:0 2px 0 0;padding:0 0 0 0;display:block;background:#000;overflow: hidden;}
+#slide ul.pagination li:last-child {width:155px;height:78px;float:left;margin:0px;padding:0 0 0 0;display:block;background:#000;overflow: hidden;}
+#slide ul.pagination li.current {background:none;}
+#slide ul.pagination li a {color:#fff;width:153px;height:78px;display:block;padding:0;margin:0;background: url(../images/slie_smallimg_bkg.png) no-repeat;}
+.pagination li a img { opacity:0.5; filter: alpha(opacity=50);}
+.pagination li.current a img , .pagination li a:hover img {opacity:1; filter: alpha(opacity=100);position:relative;}
+.play.paused {color:#f00;}
+.presets {position:absolute;right:40px;top:0;margin-top:30px;}
+.presets li:hover {text-decoration:underline;cursor:pointer;}
+.presets li.curr {color:#f00;}
+.progbar {background:#830412;width:95%;height:3px;position:absolute;top:0px;right:0px;z-index:999;}
+.numStatus {position:absolute;left:0;bottom:0;background:#000;color:#fff;z-index:999;
+}
+/* ============================= content ===================== */

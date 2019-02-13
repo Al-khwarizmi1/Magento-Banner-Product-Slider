@@ -1,0 +1,106 @@
+<?php
+/**
+ * @name         :  Apptha Banner Product Slider
+ * @version      :  1.0
+ * @since        :  Magento 1.4
+ * @author       :  Apptha - http://www.apptha.com
+ * @copyright    :  Copyright (C) 2011 Powered by Apptha
+ * @license      :  http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @Creation Date:  October 22 2011
+ * 
+ * */ 
+$model = Mage::getModel('catalog/product');//get model product
+$bannerActive = Mage::getStoreConfig('bannerslide/general/activate_apptha_bannerslide');//get banner enable or disable
+//$productType = Mage::getStoreConfig('bannerslide/general/select_apptha_producttype');//select product type to display in banner
+$text_color = Mage::getStoreConfig('bannerslide/general/select_apptha_textcolor');//select product text color to display in banner
+
+?>
+
+<!-- get product collection to the selected product type -->
+<?php $productCollection = $this->getProductCollections();$productCount = count($productCollection);?>
+<?php if($bannerActive == 1 && $productCount > 0):?>
+<!-- ends here -->
+
+<!-- Banner Slider Starts -->
+<div class="clear"></div>
+<div class="slideshow">
+	
+<div id="slide">
+	<div class="slider">
+		<ul class="items">
+			<?php $todayDate  = Mage::app()->getLocale()->date()->toString(Varien_Date::DATETIME_INTERNAL_FORMAT);
+			foreach ($productCollection as $products)
+			{
+				$product = $model->load($products->getId());
+				if (!$product->isGrouped())
+				{
+					
+					$toDate = $product->getspecial_to_date();
+					if((!$product->getSpecialPrice())||(($toDate<$todayDate)&&(!empty($toDate))))
+					{
+						$discount = 0;
+					}
+					else
+					{
+						$discountPrice = $product->getPrice() - $product->getSpecialPrice();
+						$discount = ($discountPrice * 100) / $product->getPrice();
+						$discount = round($discount);
+					}
+				}
+				if(strlen($product->getName())>20)
+				{
+					$productName = substr($product->getName(),0,20).'...';
+
+				}
+				else
+				{
+					$productName = $product->getName();
+				}
+				if(strlen($product->getdescription())>40)
+				{
+					$productDescription = substr($product->getdescription(),0,145).'...';
+
+				}
+				else
+				{
+					$productDescription = $product->getdescription();
+				}
+				
+			?>
+			<li><img src="<?php echo Mage::helper('catalog/image')->init($product, 'banner'); ?>" alt="" />
+				<div class="banner">
+					<?php if($discount > 0){?>
+					<div class="discount_banner"><?php echo $discount; ?>%</div><?php }?>
+					<div class="p_name"><?php echo $productName; ?></div>
+					<div class="p_des"><?php echo $productDescription; ?></div>
+					<div class="p_orprice"><?php echo Mage::helper('core')->currency(($product->getPrice()),true,false);  ?></div>
+					<?php if($product->getSpecialPrice() > 0){?>
+					<div class="p_spprice"><?php echo Mage::helper('core')->currency(($product->getSpecialPrice()),true,false); ?></div><?php }?>
+					<a href="<?php echo Mage::helper('checkout/cart')->getAddUrl($product); ?>" class="shopnow"></a>
+				</div>
+			</li>
+			<?php } ?>
+		</ul>
+	</div>
+	<div class="clear"></div>
+		<ul class="pagination">
+			<?php $todayDate  = Mage::app()->getLocale()->date()->toString(Varien_Date::DATETIME_INTERNAL_FORMAT);
+			foreach ($productCollection as $products)
+			{
+				$product = $model->load($products->getId());
+			?>
+			<li><a href="#"><img src="<?php echo Mage::helper('catalog/image')->init($product, 'small_image'); ?>" alt="" width="153" height="78" /></a></li>
+			<?php } ?>
+		</ul>
+</div>
+</div>
+<?php endif; ?>
+<!-- Banner Slider Ends -->
+
+<!--Dynamic style changes goes here-->
+<style>
+.banner .p_name { width: 100%; font: normal 36px 'Oswald', sans-serif; color: #<?php echo $text_color; ?>; text-align: left;}
+.banner .p_des { width: 360px; float: left; height: 75px; color: #<?php echo $text_color; ?>; text-align: left; line-height: 20px; }
+.banner .p_orprice {clear:both; font: normal 16px 'Impact', Charcoal, sans-serif; color: #<?php echo $text_color; ?>; text-align: left;  text-decoration:  <?php echo ($product->getSpecialPrice() !="")? 'line-through':'none'?>; float:left; padding-top: 13px;}
+.banner .p_spprice {font: normal 35px 'Impact', Charcoal, sans-serif; color: #<?php echo $text_color; ?>; text-align: left; float:left; padding-left: 20px;width:360px;}
+</style>
